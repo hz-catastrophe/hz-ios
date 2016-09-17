@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SocketIOClientSwift
+//import SocketIO
 
 class ViewController: UIViewController {
 
@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
 
-
+/*
     //let socket = SocketIOClient(socketURL: NSURL(string: "http://hz.wx.rs:8000")!, options: [.Log(true), .ForcePolling(true)])
     let socket = SocketIOClient(socketURL: NSURL(string: "http://hz.wx.rs:8000")!)
 
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
     }
     
     socket.connect()
+ */
   }
 
   override func didReceiveMemoryWarning() {

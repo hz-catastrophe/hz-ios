@@ -2,7 +2,8 @@ use_frameworks!
 
 target 'HZCatastrophe' do
 
-pod 'Socket.IO-Client-Swift', '~>6.0'
+#pod 'Socket.IO-Client-Swift', '~>6.0'
+pod 'Socket.IO-Client-Swift'
 
 end
 

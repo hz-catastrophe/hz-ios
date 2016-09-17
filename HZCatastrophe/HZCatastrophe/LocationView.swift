@@ -14,21 +14,29 @@ class LocationView: UIView {
 
   private let previewImageView = UIImageView()
   private let titleLabel = UILabel()
+  private let marker = UIImageView(image: UIImage(named: "location")?.imageWithRenderingMode(.AlwaysTemplate))
 
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    self.previewImageView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height - 40)
+    self.previewImageView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height - 30)
     self.previewImageView.layer.cornerRadius = 8
     self.previewImageView.clipsToBounds = true
     self.previewImageView.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
     self.addSubview(self.previewImageView)
 
-    self.titleLabel.frame = CGRect(x: 0, y: self.frame.height - 40, width: self.frame.width, height: 40)
+    self.titleLabel.frame = CGRect(x: 0, y: self.frame.height - 30, width: self.frame.width, height: 30)
     self.titleLabel.font = UIFont.systemFontOfSize(13)
     self.titleLabel.textColor = UIColor(white: 0.2, alpha: 1.0)
     self.titleLabel.text = "Loading location..."
     self.addSubview(self.titleLabel)
+
+    self.marker.frame.size = CGSize(width: 50, height: 50)
+    self.marker.center = self.previewImageView.center
+    self.marker.frame.origin.y -= self.marker.frame.size.height / 2
+    self.marker.tintColor = UIColor.HZMainColor()
+    self.marker.alpha = 0.0
+    self.addSubview(self.marker)
 
     NSNotificationCenter.defaultCenter().addObserverForName("locationChanged", object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) in
       self.reloadView()
@@ -57,6 +65,7 @@ class LocationView: UIView {
           print("Error loading snapshot: ", e)
           return
         }
+        self.marker.alpha = 1.0
         self.previewImageView.image = snapshot?.image
       })
     }

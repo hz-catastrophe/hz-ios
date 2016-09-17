@@ -55,7 +55,7 @@ class MiniTabBar: UIView {
       let x = CGFloat(spacing * (i+1)) + (width * CGFloat(i))
       let container = MiniTabBarItemView(frame: CGRectMake(x, 0, width, frame.size.height))
 
-      let titleLabel = UILabel(frame: CGRectMake(0, container.frame.size.height, container.frame.size.width, 10))
+      let titleLabel = UILabel(frame: CGRectMake(0, container.frame.size.height, container.frame.size.width, 14))
       titleLabel.text = item.title
       titleLabel.font = UIFont.systemFontOfSize(12)
       titleLabel.textColor = UIColor.HZMainColor()
