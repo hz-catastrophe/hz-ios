@@ -43,7 +43,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     config.duration = .seconds(seconds: 4)
     SwiftMessages.show(config: config, view: view)
      */
-/*
+
     let alert = Alert(title: "Loading, please wait...")
     alert.show()
     SocketManager.sharedManager.list { (response: [[String:AnyObject]]) -> (Void) in
@@ -52,9 +52,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         //self.mapView.showAnnotations(self.mapView.annotations, animated: true)
       })
     }
-*/
   }
-/*
+
   func updateMap(items: [[String:Any]]) {
     let filtered = items.filter {
       for skill in self.skills {
@@ -67,23 +66,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     var its = [CustomAnnotation]()
     for item in filtered {
       let location = item["location"] as! [String:Double]
-      //let pin = CustomAnnotation(coordinate: CLLocationCoordinate2DMake(location["lat"]!, location["lng"]!), title: item["name"] as? String, subtitle: "Needs something")
-      //its.append(pin)
+      let pin = CustomAnnotation(coordinate: CLLocationCoordinate2DMake(location["lat"]!, location["lng"]!), title: item["name"] as? String, subtitle: nil)
+      pin.item = item as! [String:AnyObject]
+      its.append(pin)
     }
-    //self.mv.addAnnotations(its)
-    //self.mv.showAnnotations(its, animated: true)
+    self.mv.addAnnotations(its)
   }
-*/
+
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     let p = MKPointAnnotation()
     p.coordinate = CLLocationCoordinate2DMake(47, 8)
     self.mv.addAnnotation(p)
-  }
-
-  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-
   }
 
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -98,11 +93,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   }
 
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-
-  }
-
-  func open() {
-    Alert(title: "Hello", message: "World").showOkay()
+    let a = view.annotation as! CustomAnnotation
+    Alert(title: "Help Requested", message: "\(a.item["name"] as! String) needs your help.").addAction("Cancel", style: .cancel, handler: nil).addAction("On my way", style: .default, preferredAction: true) { (action: UIAlertAction!) in
+      SocketManager.sharedManager.accept(id: a.item["id"] as! String) {
+        Alert(title: "Awesome!", message: "Please update your status when you arrive.")
+      }
+    }.show()
   }
 }
 
@@ -110,6 +106,7 @@ class CustomAnnotation: NSObject, MKAnnotation {
   var coordinate: CLLocationCoordinate2D
   var title: String?
   var subtitle: String?
+  var item: [String:AnyObject]!
   init(coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?) {
     self.coordinate = coordinate
     self.title = title

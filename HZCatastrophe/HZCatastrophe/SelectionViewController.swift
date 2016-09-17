@@ -227,9 +227,11 @@ class SelectionViewController: UIViewController, UIImagePickerControllerDelegate
     self.scrollView.isHidden = true
     if mode == 0 {
       let vc = HelpOTWViewController()
+      self.addChildViewController(vc)
       self.view.addSubview(vc.view)
     } else {
       let vc = MapViewController()
+      self.addChildViewController(vc)
       vc.skills = self.skillsSelection.selectedItems()
       self.view.addSubview(vc.view)
     }

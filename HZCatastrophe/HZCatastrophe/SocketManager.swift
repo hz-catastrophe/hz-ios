@@ -50,6 +50,13 @@ class SocketManager {
       completion(r1)
     }
   }
+
+  func accept(id: String, completion: @escaping (Void)->(Void)) {
+    socket.emitWithAck("reports accept", ["id":id])(0) {response in
+      print("response from 'accept':", response)
+      completion()
+    }
+  }
 }
 
 extension CLLocation {
