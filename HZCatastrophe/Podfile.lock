@@ -1,8 +1,10 @@
 PODS:
+  - LKAlertController (1.10.0)
   - Socket.IO-Client-Swift (8.0.0)
   - SwiftMessages (3.0.0)
 
 DEPENDENCIES:
+  - LKAlertController
   - Socket.IO-Client-Swift
   - SwiftMessages (from `https://github.com/SwiftKickMobile/SwiftMessages.git`, branch
     `swift3`)
@@ -18,6 +20,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/SwiftKickMobile/SwiftMessages.git
 
 SPEC CHECKSUMS:
+  LKAlertController: cfdfc6f0cdd2d35d850fee5bb4be851e22c7c1b7
   Socket.IO-Client-Swift: b5f6c274ad849b2b73717546dcf29d48ead707eb
   SwiftMessages: debcd4e7e5761021478ee240fbd0a5e02381c33f
 

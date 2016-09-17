@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import LKAlertController
 
 class SelectionViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -61,8 +62,10 @@ class SelectionViewController: UIViewController, UIImagePickerControllerDelegate
     self.scrollView.addSubview(self.locationView)
 
     if mode == 0 {
-      self.healthSelectionView.insertSegment(withTitle: "Lightly Injured", at: 0, animated: false)
-      self.healthSelectionView.insertSegment(withTitle: "Heavily Injured", at: 1, animated: false)
+      UILabel.appearance(whenContainedInInstancesOf: [UISegmentedControl.self]).numberOfLines = 0
+      self.healthSelectionView.insertSegment(withTitle: "Okay", at: 0, animated: false)
+      self.healthSelectionView.insertSegment(withTitle: "Injured", at: 1, animated: false)
+      self.healthSelectionView.insertSegment(withTitle: "Heavily\nInjured", at: 2, animated: false)
       self.healthSelectionView.frame = CGRect(x: 40, y: 0, width: self.view.frame.width - 80, height: 50)
       self.healthSelectionView.tintColor = UIColor.HZMainColor()
       self.scrollView.addSubview(self.healthSelectionView)
@@ -75,6 +78,7 @@ class SelectionViewController: UIViewController, UIImagePickerControllerDelegate
     self.scrollView.addSubview(self.skillsLabel)
 
     self.skillsSelection = MultiSelectionView(items: [MultiSelectionItem(name: "Medic", icon: UIImage(named: "medical")!),
+                                                      MultiSelectionItem(name: "Shelter", icon: UIImage(named: "shelter")!),
                                                       MultiSelectionItem(name: "Food", icon: UIImage(named: "food")!),
                                                       MultiSelectionItem(name: "Water", icon: UIImage(named: "water")!)])
     self.scrollView.addSubview(self.skillsSelection)
@@ -188,8 +192,35 @@ class SelectionViewController: UIViewController, UIImagePickerControllerDelegate
   }
 
   func save() {
-    
-    self.replaceView()
+    var status = ""
+    var needs = [String]()
+    var needs_status = ""
+    var skills = [String]()
+
+    if mode == 0 {
+      switch self.healthSelectionView.selectedSegmentIndex {
+        case 0: status = "ok"
+        case 1: status = "injured"
+        case 2: status = "heavily_injured"
+        default: status = ""
+      }
+      needs = self.skillsSelection.selectedItems().map { $0.lowercased() }
+      needs_status = "open"
+      skills = []
+    } else {
+      status = "ok"
+      needs = []
+      needs_status = "done"
+      skills = self.skillsSelection.selectedItems().map { $0.lowercased() }
+    }
+
+    let alert = Alert(title: "Loading, please wait...")
+    alert.show()
+    SocketManager.sharedManager.add(status: status, location: LocationHelper.sharedHelper.currentLocation!, needs: needs, needs_status: needs_status, skills: skills, _images: self.photos) {
+      alert.getAlertController().dismiss(animated: true, completion: {
+        self.replaceView()
+      })
+    }
   }
 
   private func replaceView() {
@@ -199,6 +230,7 @@ class SelectionViewController: UIViewController, UIImagePickerControllerDelegate
       self.view.addSubview(vc.view)
     } else {
       let vc = MapViewController()
+      vc.skills = self.skillsSelection.selectedItems()
       self.view.addSubview(vc.view)
     }
   }

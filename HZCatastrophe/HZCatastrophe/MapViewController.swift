@@ -10,15 +10,25 @@ import Foundation
 import UIKit
 import MapKit
 import SwiftMessages
+import LKAlertController
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
+
+  var skills = [String]()
+  private var items: [[String:Any]] = []
+  private var mv: MKMapView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    let mapView = MKMapView(frame: self.view.bounds)
-    self.view.addSubview(mapView)
+    self.mv = MKMapView(frame: self.view.bounds)
+    self.mv.region = MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(47.389844, 8.515625), 1200, 1200)
+    self.mv.showsUserLocation = true
+    self.mv.delegate = self
+    self.view.addSubview(self.mv)
 
+
+    /*
     let statusBarUnderlay = UIView()
     statusBarUnderlay.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 20)
     statusBarUnderlay.backgroundColor = UIColor.white
@@ -32,6 +42,78 @@ class MapViewController: UIViewController {
     var config = SwiftMessages.defaultConfig
     config.duration = .seconds(seconds: 4)
     SwiftMessages.show(config: config, view: view)
+     */
+/*
+    let alert = Alert(title: "Loading, please wait...")
+    alert.show()
+    SocketManager.sharedManager.list { (response: [[String:AnyObject]]) -> (Void) in
+      alert.getAlertController().dismiss(animated: true, completion: {
+        self.performSelector(onMainThread: #selector(self.updateMap(items:)), with: response, waitUntilDone: true)
+        //self.mapView.showAnnotations(self.mapView.annotations, animated: true)
+      })
+    }
+*/
+  }
+/*
+  func updateMap(items: [[String:Any]]) {
+    let filtered = items.filter {
+      for skill in self.skills {
+        if ($0["needs"] as! [String]).contains(skill.lowercased()) {
+          return true
+        }
+      }
+      return false
+    }
+    var its = [CustomAnnotation]()
+    for item in filtered {
+      let location = item["location"] as! [String:Double]
+      //let pin = CustomAnnotation(coordinate: CLLocationCoordinate2DMake(location["lat"]!, location["lng"]!), title: item["name"] as? String, subtitle: "Needs something")
+      //its.append(pin)
+    }
+    //self.mv.addAnnotations(its)
+    //self.mv.showAnnotations(its, animated: true)
+  }
+*/
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    let p = MKPointAnnotation()
+    p.coordinate = CLLocationCoordinate2DMake(47, 8)
+    self.mv.addAnnotation(p)
   }
 
+  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+
+  }
+
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    if (annotation.isKind(of: MKUserLocation.self)) {
+      return nil
+    }
+
+    let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "loc")
+    view.canShowCallout = true
+    view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+    return view
+  }
+
+  func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+
+  }
+
+  func open() {
+    Alert(title: "Hello", message: "World").showOkay()
+  }
+}
+
+class CustomAnnotation: NSObject, MKAnnotation {
+  var coordinate: CLLocationCoordinate2D
+  var title: String?
+  var subtitle: String?
+  init(coordinate: CLLocationCoordinate2D, title: String?, subtitle: String?) {
+    self.coordinate = coordinate
+    self.title = title
+    self.subtitle = subtitle
+    super.init()
+  }
 }

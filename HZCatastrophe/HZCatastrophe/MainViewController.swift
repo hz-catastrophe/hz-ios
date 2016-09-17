@@ -35,6 +35,7 @@ class MainViewController: UIViewController, MiniTabBarDelegate {
     tabBar.selectItem(0, animated: false)
     self.view.addSubview(tabBar)
 
+    SocketManager.sharedManager.setup()
     LocationHelper.sharedHelper.setup()
   }
 

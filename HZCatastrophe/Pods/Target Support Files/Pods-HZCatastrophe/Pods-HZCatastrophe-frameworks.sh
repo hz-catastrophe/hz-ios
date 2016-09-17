@@ -84,10 +84,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "Pods-HZCatastrophe/LKAlertController.framework"
   install_framework "Pods-HZCatastrophe/SocketIO.framework"
   install_framework "Pods-HZCatastrophe/SwiftMessages.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "Pods-HZCatastrophe/LKAlertController.framework"
   install_framework "Pods-HZCatastrophe/SocketIO.framework"
   install_framework "Pods-HZCatastrophe/SwiftMessages.framework"
 fi

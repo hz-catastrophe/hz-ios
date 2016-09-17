@@ -20,11 +20,13 @@ class MultiSelectionItem {
 
 class MultiSelectionItemView: UIView {
 
+  let item: MultiSelectionItem
   fileprivate var _🔥 = false
   fileprivate let titleLabel = UILabel()
   fileprivate let imageView = UIImageView()
 
   init(item: MultiSelectionItem) {
+    self.item = item
     super.init(frame: CGRect.zero)
     self.backgroundColor = UIColor(white: 0.95, alpha: 1.0)
     self.layer.cornerRadius = 6
@@ -84,5 +86,9 @@ class MultiSelectionView: UIView {
 
   override func sizeThatFits(_ size: CGSize) -> CGSize {
     return CGSize(width: size.width, height: self.itemViews.last!.frame.maxY)
+  }
+
+  func selectedItems() -> [String] {
+    return self.itemViews.filter { return $0._🔥 }.map { return $0.item.name }
   }
 }

@@ -53,7 +53,7 @@ class LocationView: UIView {
 
   func reloadView() {
     if let currentLocation = LocationHelper.sharedHelper.currentLocation {
-      self.titleLabel.text = "Location: \(currentLocation.coordinate.latitude) / \(currentLocation.coordinate.longitude)"
+      self.titleLabel.text = "Location: \(currentLocation.coordinate.latitude.roundToPlaces(places: 5)) / \(currentLocation.coordinate.longitude.roundToPlaces(places: 5))"
       let options = MKMapSnapshotOptions()
       let region = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 400, 400)
       options.region = region
@@ -69,5 +69,13 @@ class LocationView: UIView {
         self.previewImageView.image = snapshot?.image
       })
     }
+  }
+}
+
+extension Double {
+  /// Rounds the double to decimal places value
+  func roundToPlaces(places:Int) -> Double {
+    let divisor = pow(10.0, Double(places))
+    return (self * divisor).rounded() / divisor
   }
 }
