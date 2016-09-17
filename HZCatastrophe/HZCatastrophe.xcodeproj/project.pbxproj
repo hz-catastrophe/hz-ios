@@ -18,6 +18,15 @@
 		035D0AA21D8C733400C027DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035D0AA11D8C733400C027DF /* ViewController.swift */; };
 		035D0AA71D8C733400C027DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 035D0AA61D8C733400C027DF /* Assets.xcassets */; };
 		035D0AAA1D8C733400C027DF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 035D0AA81D8C733400C027DF /* LaunchScreen.storyboard */; };
+		0390328F1D8D991900A54774 /* HelpOTWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390328E1D8D991900A54774 /* HelpOTWViewController.swift */; };
+		039032911D8D9C1D00A54774 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039032901D8D9C1D00A54774 /* MapViewController.swift */; };
+		039032991D8DA6F800A54774 /* CardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039032931D8DA6F700A54774 /* CardView.xib */; };
+		0390329A1D8DA6F800A54774 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 039032941D8DA6F700A54774 /* Images.xcassets */; };
+		0390329B1D8DA6F800A54774 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039032951D8DA6F700A54774 /* MessageView.xib */; };
+		0390329C1D8DA6F800A54774 /* MessageViewIOS8.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039032961D8DA6F700A54774 /* MessageViewIOS8.xib */; };
+		0390329D1D8DA6F800A54774 /* StatusLine.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039032971D8DA6F700A54774 /* StatusLine.xib */; };
+		0390329E1D8DA6F800A54774 /* TabView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039032981D8DA6F700A54774 /* TabView.xib */; };
+		039032A01D8DB16000A54774 /* SocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390329F1D8DB16000A54774 /* SocketManager.swift */; };
 		4DF4A581B0ADA2D151A8100C /* Pods_HZCatastrophe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA91F2F4B18AFDFABD5567B7 /* Pods_HZCatastrophe.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +44,15 @@
 		035D0AA61D8C733400C027DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		035D0AA91D8C733400C027DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		035D0AAB1D8C733400C027DF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0390328E1D8D991900A54774 /* HelpOTWViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpOTWViewController.swift; sourceTree = "<group>"; };
+		039032901D8D9C1D00A54774 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		039032931D8DA6F700A54774 /* CardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CardView.xib; sourceTree = "<group>"; };
+		039032941D8DA6F700A54774 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		039032951D8DA6F700A54774 /* MessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
+		039032961D8DA6F700A54774 /* MessageViewIOS8.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageViewIOS8.xib; sourceTree = "<group>"; };
+		039032971D8DA6F700A54774 /* StatusLine.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusLine.xib; sourceTree = "<group>"; };
+		039032981D8DA6F700A54774 /* TabView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TabView.xib; sourceTree = "<group>"; };
+		0390329F1D8DB16000A54774 /* SocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketManager.swift; sourceTree = "<group>"; };
 		1E3B9EBE9126A1AEF4B948C9 /* Pods-HZCatastrophe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HZCatastrophe.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HZCatastrophe/Pods-HZCatastrophe.debug.xcconfig"; sourceTree = "<group>"; };
 		CA91F2F4B18AFDFABD5567B7 /* Pods_HZCatastrophe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HZCatastrophe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB914A411FF2AF67BDDECD25 /* Pods-HZCatastrophe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HZCatastrophe.release.xcconfig"; path = "Pods/Target Support Files/Pods-HZCatastrophe/Pods-HZCatastrophe.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,6 +96,7 @@
 				03111F951D8C92B5000B7D2F /* MainViewController.swift */,
 				035D0AAB1D8C733400C027DF /* Info.plist */,
 				035D0AA61D8C733400C027DF /* Assets.xcassets */,
+				039032921D8DA6F700A54774 /* Resources */,
 				035D0AA81D8C733400C027DF /* LaunchScreen.storyboard */,
 				03111FAF1D8C93CE000B7D2F /* MiniTabBar.swift */,
 				03111FB11D8C9401000B7D2F /* Colors.swift */,
@@ -85,8 +104,24 @@
 				03111FCF1D8CAF50000B7D2F /* LocationHelper.swift */,
 				03111FD11D8CB6CB000B7D2F /* LocationView.swift */,
 				03111FD31D8D3B8A000B7D2F /* MultiSelectionView.swift */,
+				0390328E1D8D991900A54774 /* HelpOTWViewController.swift */,
+				039032901D8D9C1D00A54774 /* MapViewController.swift */,
+				0390329F1D8DB16000A54774 /* SocketManager.swift */,
 			);
 			path = HZCatastrophe;
+			sourceTree = "<group>";
+		};
+		039032921D8DA6F700A54774 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				039032931D8DA6F700A54774 /* CardView.xib */,
+				039032941D8DA6F700A54774 /* Images.xcassets */,
+				039032951D8DA6F700A54774 /* MessageView.xib */,
+				039032961D8DA6F700A54774 /* MessageViewIOS8.xib */,
+				039032971D8DA6F700A54774 /* StatusLine.xib */,
+				039032981D8DA6F700A54774 /* TabView.xib */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		3E9CA4F5C0E691C1AE0435AE /* Pods */ = {
@@ -141,6 +176,7 @@
 				TargetAttributes = {
 					035D0A9B1D8C733400C027DF = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5EFBK52YD3;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -169,7 +205,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				035D0AAA1D8C733400C027DF /* LaunchScreen.storyboard in Resources */,
+				0390329A1D8DA6F800A54774 /* Images.xcassets in Resources */,
+				0390329B1D8DA6F800A54774 /* MessageView.xib in Resources */,
 				035D0AA71D8C733400C027DF /* Assets.xcassets in Resources */,
+				0390329D1D8DA6F800A54774 /* StatusLine.xib in Resources */,
+				039032991D8DA6F800A54774 /* CardView.xib in Resources */,
+				0390329E1D8DA6F800A54774 /* TabView.xib in Resources */,
+				0390329C1D8DA6F800A54774 /* MessageViewIOS8.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,14 +270,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				039032911D8D9C1D00A54774 /* MapViewController.swift in Sources */,
 				03111FB01D8C93CE000B7D2F /* MiniTabBar.swift in Sources */,
 				03111FD21D8CB6CB000B7D2F /* LocationView.swift in Sources */,
+				0390328F1D8D991900A54774 /* HelpOTWViewController.swift in Sources */,
 				03111FB61D8CAA71000B7D2F /* SelectionViewController.swift in Sources */,
 				03111FB21D8C9401000B7D2F /* Colors.swift in Sources */,
 				03111F961D8C92B5000B7D2F /* MainViewController.swift in Sources */,
 				035D0AA21D8C733400C027DF /* ViewController.swift in Sources */,
 				03111FD41D8D3B8A000B7D2F /* MultiSelectionView.swift in Sources */,
 				03111FD01D8CAF50000B7D2F /* LocationHelper.swift in Sources */,
+				039032A01D8DB16000A54774 /* SocketManager.swift in Sources */,
 				035D0AA01D8C733400C027DF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,11 +387,12 @@
 			baseConfigurationReference = 1E3B9EBE9126A1AEF4B948C9 /* Pods-HZCatastrophe.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5EFBK52YD3;
 				INFOPLIST_FILE = HZCatastrophe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dylanmarriott.HZCatastrophe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -355,11 +401,12 @@
 			baseConfigurationReference = FB914A411FF2AF67BDDECD25 /* Pods-HZCatastrophe.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5EFBK52YD3;
 				INFOPLIST_FILE = HZCatastrophe/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dylanmarriott.HZCatastrophe;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

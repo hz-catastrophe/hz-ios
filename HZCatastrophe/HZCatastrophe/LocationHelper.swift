@@ -14,7 +14,7 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
 
   static let sharedHelper = LocationHelper()
   var currentLocation: CLLocation?
-  private let locationManager = CLLocationManager()
+  fileprivate let locationManager = CLLocationManager()
 
   func setup() {
     locationManager.delegate = self
@@ -23,14 +23,14 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
     locationManager.requestWhenInUseAuthorization()
   }
 
-  @objc func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-    if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+  @objc func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    if status == .authorizedAlways || status == .authorizedWhenInUse {
       manager.startUpdatingLocation()
     }
   }
 
-  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+  func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     self.currentLocation = locations.last
-    NSNotificationCenter.defaultCenter().postNotificationName("locationChanged", object: nil)
+    NotificationCenter.default.post(name: Notification.Name(rawValue: "locationChanged"), object: nil)
   }
 }

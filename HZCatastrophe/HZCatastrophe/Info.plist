@@ -36,6 +36,10 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Your location will only be shared when you explicitly decide to do so.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Your photos won&apos;t be shared</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Your photos won&apos;t be shared</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>NSAppTransportSecurity</key>

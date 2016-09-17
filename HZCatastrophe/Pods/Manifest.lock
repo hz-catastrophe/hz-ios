@@ -1,10 +1,24 @@
 PODS:
   - Socket.IO-Client-Swift (8.0.0)
+  - SwiftMessages (3.0.0)
 
 DEPENDENCIES:
   - Socket.IO-Client-Swift
+  - SwiftMessages (from `https://github.com/SwiftKickMobile/SwiftMessages.git`, branch
+    `swift3`)
+
+EXTERNAL SOURCES:
+  SwiftMessages:
+    :branch: swift3
+    :git: https://github.com/SwiftKickMobile/SwiftMessages.git
+
+CHECKOUT OPTIONS:
+  SwiftMessages:
+    :commit: 2b398660759bc08afcda725c0c95305e674d21f0
+    :git: https://github.com/SwiftKickMobile/SwiftMessages.git
 
 SPEC CHECKSUMS:
   Socket.IO-Client-Swift: b5f6c274ad849b2b73717546dcf29d48ead707eb
+  SwiftMessages: debcd4e7e5761021478ee240fbd0a5e02381c33f
 
 COCOAPODS: 0.39.0

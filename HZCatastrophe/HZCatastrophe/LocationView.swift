@@ -12,9 +12,9 @@ import MapKit
 
 class LocationView: UIView {
 
-  private let previewImageView = UIImageView()
-  private let titleLabel = UILabel()
-  private let marker = UIImageView(image: UIImage(named: "location")?.imageWithRenderingMode(.AlwaysTemplate))
+  fileprivate let previewImageView = UIImageView()
+  fileprivate let titleLabel = UILabel()
+  fileprivate let marker = UIImageView(image: UIImage(named: "location")?.withRenderingMode(.alwaysTemplate))
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -26,7 +26,7 @@ class LocationView: UIView {
     self.addSubview(self.previewImageView)
 
     self.titleLabel.frame = CGRect(x: 0, y: self.frame.height - 30, width: self.frame.width, height: 30)
-    self.titleLabel.font = UIFont.systemFontOfSize(13)
+    self.titleLabel.font = UIFont.systemFont(ofSize: 13)
     self.titleLabel.textColor = UIColor(white: 0.2, alpha: 1.0)
     self.titleLabel.text = "Loading location..."
     self.addSubview(self.titleLabel)
@@ -38,7 +38,7 @@ class LocationView: UIView {
     self.marker.alpha = 0.0
     self.addSubview(self.marker)
 
-    NSNotificationCenter.defaultCenter().addObserverForName("locationChanged", object: nil, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) in
+    NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "locationChanged"), object: nil, queue: OperationQueue.main) { (notification: Notification) in
       self.reloadView()
     }
   }
@@ -48,7 +48,7 @@ class LocationView: UIView {
   }
 
   deinit {
-    NSNotificationCenter.defaultCenter().removeObserver(self)
+    NotificationCenter.default.removeObserver(self)
   }
 
   func reloadView() {
@@ -58,9 +58,9 @@ class LocationView: UIView {
       let region = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 400, 400)
       options.region = region
       options.size = previewImageView.frame.size
-      options.scale = UIScreen.mainScreen().scale
+      options.scale = UIScreen.main.scale
       let mapSnapshot = MKMapSnapshotter(options: options)
-      mapSnapshot.startWithCompletionHandler({ (snapshot: MKMapSnapshot?, error: NSError?) in
+      mapSnapshot.start(completionHandler: { (snapshot: MKMapSnapshot?, error: Error?) in
         if let e = error {
           print("Error loading snapshot: ", e)
           return

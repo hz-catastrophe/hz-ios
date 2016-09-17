@@ -11,7 +11,7 @@ import UIKit
 
 class MainViewController: UIViewController, MiniTabBarDelegate {
 
-  private var vcs = [UIViewController]()
+  fileprivate var vcs = [UIViewController]()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -23,7 +23,7 @@ class MainViewController: UIViewController, MiniTabBarDelegate {
       self.addChildViewController(vc)
       self.view.addSubview(vc.view)
       vc.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height - 44)
-      vc.didMoveToParentViewController(self)
+      vc.didMove(toParentViewController: self)
       vc.view.alpha = 0.0
     }
 
@@ -38,12 +38,11 @@ class MainViewController: UIViewController, MiniTabBarDelegate {
     LocationHelper.sharedHelper.setup()
   }
 
-  func tabSelected(index: Int) {
+  func tabSelected(_ index: Int) {
     let other = index == 0 ? 1 : 0
-    UIView.animateWithDuration(0.1) { 
+    UIView.animate(withDuration: 0.1, animations: { 
       self.vcs[index].view.alpha = 1.0
       self.vcs[other].view.alpha = 0.0
-    }
+    }) 
   }
-
 }

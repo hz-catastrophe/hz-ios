@@ -4,6 +4,8 @@ target 'HZCatastrophe' do
 
 #pod 'Socket.IO-Client-Swift', '~>6.0'
 pod 'Socket.IO-Client-Swift'
+#pod 'SwiftMessages'
+pod 'SwiftMessages', :git => 'https://github.com/SwiftKickMobile/SwiftMessages.git', :branch => 'swift3'
 
 end
 
