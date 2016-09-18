@@ -16,7 +16,7 @@ class SocketManager {
   var socket: SocketIOClient!
 
   func setup() {
-    self.socket = SocketIOClient(socketURL: URL(string: "http://hz.wx.rs:5001")!)
+    self.socket = SocketIOClient(socketURL: URL(string: "http://hz.wx.rs:8000")!)
     self.socket.on("connect") {data, ack in
       print("socket connected")
       self.socket.emit("reports reset")
@@ -51,7 +51,7 @@ class SocketManager {
     }
   }
 
-  func accept(id: String, completion: @escaping (Void)->(Void)) {
+  func accept(id: NSNumber, completion: @escaping (Void)->(Void)) {
     socket.emitWithAck("reports accept", ["id":id])(0) {response in
       print("response from 'accept':", response)
       completion()

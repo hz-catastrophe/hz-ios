@@ -88,15 +88,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "loc")
     view.canShowCallout = true
-    view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+    let button = UIButton(type: .custom)
+    button.setImage(UIImage(named:"d")?.withRenderingMode(.alwaysTemplate), for: .normal)
+    button.tintColor = UIColor(white: 0.2, alpha: 1.0)
+    button.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+    view.rightCalloutAccessoryView = button
     return view
   }
 
   func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
     let a = view.annotation as! CustomAnnotation
     Alert(title: "Help Requested", message: "\(a.item["name"] as! String) needs your help.").addAction("Cancel", style: .cancel, handler: nil).addAction("On my way", style: .default, preferredAction: true) { (action: UIAlertAction!) in
-      SocketManager.sharedManager.accept(id: a.item["id"] as! String) {
-        Alert(title: "Awesome!", message: "Please update your status when you arrive.")
+      SocketManager.sharedManager.accept(id: a.item["id"] as! NSNumber) {
+        Alert(title: "Awesome!", message: "Please update your status when you arrive.").showOkay()
       }
     }.show()
   }
